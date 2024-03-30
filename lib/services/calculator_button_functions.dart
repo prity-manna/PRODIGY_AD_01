@@ -4,16 +4,9 @@ class ButtonFunctions {
 
   static Future<bool> isDecimal(String val) async => val == ".";
 
-  static Future<bool> isOperator(String val) async {
-    return val == "/" || val == "x" || val == "+" || val == "-";
-  }
+  static Future<bool> isOperator(String val) async => val == "/" || val == "x" || val == "+" || val == "-";
 
-  static Future<bool> _isNumeric(String? str) async {
-    if (str == null) {
-      return false;
-    }
-    return double.tryParse(str) != null;
-  }
+  static Future<bool> _isNumeric(String str) async => double.tryParse(str) != null;
 
   static Future<int> _getPrecedence(String op) async {
     switch (op) {
@@ -28,11 +21,7 @@ class ButtonFunctions {
     }
   }
 
-  static Future<bool> _hasHigherPrecedence(String op1, String op2) async {
-    int precedence1 = await _getPrecedence(op1);
-    int precedence2 = await _getPrecedence(op2);
-    return precedence1 >= precedence2;
-  }
+  static Future<bool> _hasHigherPrecedence(String op1, String op2) async => await _getPrecedence(op1) >= await _getPrecedence(op2);
 
   static Future<List<String>> _convertToPostfix(List<String> infixExpression) async {
     List<String> postfix = [];
