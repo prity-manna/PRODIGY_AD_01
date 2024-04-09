@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatefulWidget {
   late final String _buttonText;
   final Function(String text) onTapActivity;
-  CustomButton({super.key, required String buttonText, required this.onTapActivity}) {
+  CustomButton(
+      {super.key, required String buttonText, required this.onTapActivity}) {
     _buttonText = buttonText;
   }
 
@@ -11,15 +12,18 @@ class CustomButton extends StatefulWidget {
   State<CustomButton> createState() => _CustomButtonState();
 }
 
-class _CustomButtonState extends State<CustomButton> with SingleTickerProviderStateMixin {
+class _CustomButtonState extends State<CustomButton>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 200));
-    _scaleAnimation = Tween<double>(begin: 0.95, end: 1.0).animate(_animationController);
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 200));
+    _scaleAnimation =
+        Tween<double>(begin: 0.95, end: 1.0).animate(_animationController);
   }
 
   @override
@@ -52,7 +56,7 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
           child: Text(
             widget._buttonText,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.white, fontSize: 30),
+            style: const TextStyle(color: Colors.white, fontSize: 25),
           ),
         ),
       ),
